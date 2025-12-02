@@ -17,8 +17,7 @@ object Day02 extends AdventOfCode {
 
     (1 to length / 2).map { size =>
       if (length % size == 0) {
-        val pattern = stringId.take(size)
-        pattern * (length / size) == stringId
+        stringId.take(size) * (length / size) == stringId
       } else {
         false
       }
