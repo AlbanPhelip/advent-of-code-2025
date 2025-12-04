@@ -23,19 +23,21 @@ object Day04 extends AdventOfCode {
 
   override def execute(): (Long, Long) = {
 
+    /* Star 1 */
     val star1 = parsedInput.indices.flatMap { y =>
       parsedInput.head.indices.filter { x =>
         parsedInput(y)(x) == '@' && countAdjacent(x, y) < 4
       }
     }.length
 
+    /* Star 2 */
     var finished = false
     var star2 = 0
 
     while(!finished) {
       var localCount = 0
-      parsedInput.indices.flatMap { y =>
-        parsedInput.head.indices.map { x =>
+      parsedInput.indices.foreach { y =>
+        parsedInput.head.indices.foreach { x =>
           if(parsedInput(y)(x) == '@' && countAdjacent(x, y) < 4) {
             localCount += 1
             parsedInput(y)(x) = '.'
